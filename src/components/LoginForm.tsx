@@ -50,8 +50,8 @@ export default function LoginForm() {
             our letters🌱
           </h1>
           <p className="text-pink-700">
-            heyy baobeiii, js thought i'd make this so that we can send letters
-            to each other and revisit them haha
+            heyy baobeiii, js thought i&apos;d make this so that we can send
+            letters to each other and revisit them haha
           </p>
         </div>
 
