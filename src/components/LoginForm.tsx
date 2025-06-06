@@ -124,7 +124,9 @@ export default function LoginForm() {
               }}
               className="text-pink-600 hover:text-pink-700 font-medium"
             >
-              {isLogin ? "Register" : "Sign in"}
+              {isLogin
+                ? "Need an account? Register"
+                : "Already have an account? Sign in!"}
             </button>
           </div>
         </div>

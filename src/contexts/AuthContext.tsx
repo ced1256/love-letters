@@ -22,6 +22,11 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
+interface RegisterUserResponse {
+  success: boolean;
+  message: string;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -92,7 +97,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (!error) {
-        const result = data as any;
+        const result = data as RegisterUserResponse;
         if (result.success === false) {
           return { error: result.message };
         }

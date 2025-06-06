@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/lib/supabase";
 import { Heart, Plus, LogOut } from "lucide-react";
@@ -26,13 +26,7 @@ export default function LettersDashboard() {
 
   const { user, signOut } = useAuth();
 
-  useEffect(() => {
-    if (user) {
-      fetchLetters();
-    }
-  }, [user]);
-
-  const fetchLetters = async () => {
+  const fetchLetters = useCallback(async () => {
     try {
       if (!user) return;
 
@@ -48,7 +42,13 @@ export default function LettersDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      fetchLetters();
+    }
+  }, [user, fetchLetters]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
