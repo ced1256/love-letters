@@ -97,10 +97,10 @@ export default function LettersDashboard() {
         <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl mx-auto p-6 sm:p-8">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <h2 className="text-3xl font-bold text-pink-800 mb-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-pink-800 mb-2">
                 {viewingLetter.title}
               </h2>
-              <p className="text-pink-600">
+              <p className="text-sm sm:text-base text-pink-600">
                 From: {viewingLetter.author} &bull;{" "}
                 {new Date(viewingLetter.created_at).toLocaleDateString()}
               </p>
@@ -112,7 +112,7 @@ export default function LettersDashboard() {
               &times;
             </button>
           </div>
-          <div className="prose max-w-none text-gray-800 whitespace-pre-wrap mt-6 text-lg">
+          <div className="prose max-w-none text-gray-800 whitespace-pre-wrap mt-6 text-base sm:text-lg">
             {viewingLetter.content}
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function LettersDashboard() {
               />
             </div>
 
-            <div className="flex space-x-4 pt-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 pt-4">
               <button
                 type="submit"
                 className="flex-1 bg-pink-500 text-white py-3 rounded-lg font-medium hover:bg-pink-600"
@@ -193,10 +193,10 @@ export default function LettersDashboard() {
     <div className="min-h-screen bg-pink-200">
       {/* Header */}
       <div className="bg-pink-300 p-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
           <div className="flex items-center space-x-3">
             <Heart className="w-8 h-8 text-pink-700" />
-            <div>
+            <div className="text-center sm:text-left">
               <h1 className="text-2xl font-bold text-pink-800">
                 our letters🌱
               </h1>

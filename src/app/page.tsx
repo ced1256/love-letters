@@ -3,16 +3,17 @@
 import { useAuth } from "@/contexts/AuthContext";
 import LoginForm from "@/components/LoginForm";
 import LettersDashboard from "@/components/LettersDashboard";
+import { Heart } from "lucide-react";
 
 export default function Home() {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-pink-200 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <Heart className="w-12 h-12 text-pink-600 mx-auto mb-4 animate-pulse" />
+          <p className="text-pink-800">Loading your love letters...</p>
         </div>
       </div>
     );
