@@ -34,18 +34,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for a saved user session in localStorage
-    try {
-      const savedUser = localStorage.getItem("app_user");
-      if (savedUser) {
-        const parsedUser = JSON.parse(savedUser);
-        setUser(parsedUser);
+    function loadUserFromStorage() {
+      try {
+        const savedUser = localStorage.getItem("app_user");
+        if (savedUser) {
+          const parsedUser = JSON.parse(savedUser);
+          setUser(parsedUser);
+        }
+      } catch (error) {
+        console.error("Failed to load user from localStorage", error);
+        localStorage.removeItem("app_user");
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Failed to load user from localStorage", error);
-      localStorage.removeItem("app_user");
     }
-    setLoading(false);
+
+    loadUserFromStorage();
   }, []);
 
   const signIn = async (username: string, password: string) => {
